@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch A Sketch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="heading">Etch A Sketch</h1>
+  </header>
+
+  <section>
+
+    <div class="controls">
+      <div>
+        <p>Grid density: </p>
+        <div class="slidecontainer">
+            <div id="gridValue"></div>
+            <input type="range" min="4" max="50" class="slider" id="slider">
+            <div id="gridSizeDisplay"></div>
+        </div>
+      </div>
+      <div class="settings">
+        <p>Mode: </p>
+            <input id="colorPicker" type="color" value="#000000" />
+            <button id="rainbow">Rainbow</button>
+            <button id="erase">Erase</button>
+      </div>
+    </div>      
+    <div id="grid" class="grid"></div>
+
+
+  </section>
+
+
+  <script src="EAS.js"></script>
+</body>
+</html>

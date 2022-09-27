@@ -1,0 +1,19 @@
+html {
+  background-color: rgb(211, 211, 211);
+}
+
+.grid {
+  display: grid;
+  width: 600px;
+  height: 600px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px;
+  background-color:#a3a3a3;
+  margin-top: 40px;
+}
+
+.grid_cell {
+    background-color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+button { user-select:none;}
