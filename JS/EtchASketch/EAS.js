@@ -2,14 +2,36 @@
 const grid = document.getElementById('grid');
 const slider = document.getElementById('slider')
 let gridSizeDisplay = document.getElementById('gridSizeDisplay')
-defaultColor = '#000000';
+let defaultColor = '#000000';
+let defaultBlank = '#FFFFFF';
+
 selectedColor = defaultColor;
 let setting = 'color';
+const rainbow = document.getElementById('rainbow');
 
 const colorPicker = document.getElementById('colorPicker');
 const erase = document.getElementById('erase');
-colorPicker.addEventListener('click', () => settingToColor());
+const eraser = document.getElementById('eraser');
+const color = document.getElementById('color');
+color.classList.add('active');
+
+
+rainbow.addEventListener('mouseover', (e) => hover(e));
+eraser.addEventListener('mouseover', (e) => hover(e));
+erase.addEventListener('mouseover', (e) => hover(e));
+color.addEventListener('mouseover', (e) => hover(e));
+
+rainbow.addEventListener('mouseout', (e) => removeHover(e));
+color.addEventListener('mouseout', (e) => removeHover(e));
+eraser.addEventListener('mouseout', (e) => removeHover(e));
+erase.addEventListener('mouseout', (e) => removeHover(e));
+buttons = document.querySelectorAll('button');
+
+colorPicker.addEventListener('click', (e) => settingToColor(e));
+color.addEventListener('click', (e) => settingToColor(e));
 colorPicker.addEventListener('input', (e) => getColor(e));
+rainbow.addEventListener('click', (e) => settingToRainbow(e));
+eraser.addEventListener('click', (e) => settingToEraser(e));
 
 let mouseDown = false;
 document.body.onmousedown = () => {mouseDown = true}
@@ -40,21 +62,85 @@ function makeGrid(size) {
     }
   }
 
+  function hover(e) {
+    e.target.classList.add('active');
 
 
-  function settingToColor(){
-    setting = 'color';
+ }
+ function resetStyle() {
+  eraser.classList.remove('active');
+  color.classList.remove('active');
+  rainbow.classList.remove('active'); 
+  console.log('ok')
+ }
+ function removeHover() {
+
+  if (setting === 'eraser') {
+    rainbow.classList.remove('active');
+    color.classList.remove('active');
+    erase.classList.remove('active');
+
+
+
+
   }
+  else if (setting === 'rainbow') {
+    eraser.classList.remove('active');
+    color.classList.remove('active');
+    erase.classList.remove('active');
+
+    
+
+  }
+
+  else if (setting === 'color') {
+    rainbow.classList.remove('active');
+    eraser.classList.remove('active');
+    erase.classList.remove('active');
+
+
+  }
+
+ }
+
+  function settingToEraser(e){
+    setting = 'eraser';
+    resetStyle()
+    eraser.classList.add('active');
+
+  }
+
+
+  function settingToColor(e){
+    setting = 'color';
+    resetStyle()
+    color.classList.add('active');
+
+  }
+
+  function settingToRainbow(e){
+    setting = 'rainbow';
+    resetStyle()
+    rainbow.classList.add('active');
+  }
+
   function updateColor(e){
        if (e.type === 'mouseover' &&  mouseDown === false) return
       
-       else if (setting = 'color'){ 
+       else if (setting === 'color'){ 
        e.target.style.backgroundColor  = selectedColor;
     }
-    else  {
-  
-    }
+
+    else if (setting === 'rainbow') {
+      const randomR = Math.floor(Math.random() * 256)
+      const randomG = Math.floor(Math.random() * 256)
+      const randomB = Math.floor(Math.random() * 256)
+      e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
   }
+  else if (setting === 'eraser') {
+    e.target.style.backgroundColor  = defaultBlank;
+
+}}
 
   function getColor(e){
     console.log(e);

@@ -8,30 +8,34 @@
 </head>
 <body>
 
-  <header class="header">
-    <h1 class="heading">Etch A Sketch</h1>
-  </header>
-
   <section>
+    <header class="header">
+      <h1 class="heading">Etch A Sketch</h1>
+    </header>
+    <div id="grid" class="grid"> </div>
+    
 
-    <div class="controls">
-      <div>
-        <p>Grid density: </p>
-        <div class="slidecontainer">
-            <div id="gridValue"></div>
-            <input type="range" min="4" max="50" class="slider" id="slider">
-            <div id="gridSizeDisplay"></div>
-        </div>
-      </div>
+
+    <div class="panel">
       <div class="settings">
-        <p>Mode: </p>
+        <div>
+          
+        </div>
             <input id="colorPicker" type="color" value="#000000" />
+            <button id="color">Color</button>
             <button id="rainbow">Rainbow</button>
+            <button id="eraser">Eraser</button>
             <button id="erase">Erase</button>
-      </div>
-    </div>      
-    <div id="grid" class="grid"></div>
 
+            <div class="slideContainer">
+              <div id="gridValue"></div>
+              <div id="gridSizeDisplay"></div>
+
+              <input type="range" min="4" max="50" class="slider" id="slider">
+          </div>
+
+       </div>
+     </div>      
 
   </section>
 
