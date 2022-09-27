@@ -33,9 +33,17 @@ colorPicker.addEventListener('input', (e) => getColor(e));
 rainbow.addEventListener('click', (e) => settingToRainbow(e));
 eraser.addEventListener('click', (e) => settingToEraser(e));
 
-let mouseDown = false;
-document.body.onmousedown = () => {mouseDown = true}
-document.body.onmouseup = () => (mouseDown = false);
+let mouseisdown = false;
+
+document.body.addEventListener(
+  "mousedown",
+  function() {mouseisdown = true}
+);
+
+document.body.addEventListener(
+  "mouseup",
+  function() {mouseisdown = false}
+);
 
 slider.value = 16;
 let gridSize = slider.value;
@@ -125,7 +133,7 @@ function makeGrid(size) {
   }
 
   function updateColor(e){
-       if (e.type === 'mouseover' &&  mouseDown === false) return
+       if (e.type === 'mouseover' &&  mouseisdown === false) return
       
        else if (setting === 'color'){ 
        e.target.style.backgroundColor  = selectedColor;
